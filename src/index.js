@@ -2,6 +2,9 @@ const path = require("path");
 const fs = require("fs");
 const { PrismaClient } = require("@prisma/client");
 const { ApolloServer, PubSub } = require("apollo-server");
+const {
+  ApolloServerPluginLandingPageLocalDefault,
+} = require("apollo-server-core");
 const Query = require("./resolvers/Query");
 const Mutation = require("./resolvers/Mutation");
 const User = require("./resolvers/User");
@@ -33,6 +36,10 @@ const server = new ApolloServer({
       userId: req && req.headers.authorization ? getUserId(req) : null,
     };
   },
+  introspection: true,
+  // plugins: [ApolloServerPluginLandingPageLocalDefault({ footer: false })],
 });
+
+const port = process.env.PORT || 3000;
 
 server.listen().then(({ url }) => console.log(`Server is running on ${url}`));
