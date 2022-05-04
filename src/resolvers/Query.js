@@ -4,6 +4,8 @@ async function feed(parent, args, context) {
         OR: [
           {
             description: { contains: args.filter },
+          },
+          {
             url: { contains: args.filter },
           },
         ],
