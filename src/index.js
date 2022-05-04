@@ -37,6 +37,7 @@ const server = new ApolloServer({
     };
   },
   introspection: true,
+  playground: true,
   // plugins: [ApolloServerPluginLandingPageLocalDefault({ footer: false })],
 });
 
