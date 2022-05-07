@@ -10,6 +10,7 @@ type Link {
   url: String!
   postedBy: User
   votes: [Vote!]!
+  createdAt: DateTime!
 }
 
 type Mutation {
@@ -56,6 +57,9 @@ enum Sort {
 }
 
 type Feed {
+  id: ID!
   links: [Link!]!
   count: Int!
 }
+
+scalar DateTime
